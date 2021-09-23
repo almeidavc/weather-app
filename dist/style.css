@@ -5,3 +5,27 @@
   margin: 0;
   padding: 0;
 }
+
+/* SUMMARY */
+
+.sum {
+  margin: 1rem;
+}
+
+.sum__temps {
+  display: flex;
+  align-items: center;
+}
+
+.sum__temp-now {
+  font-size: 2em;
+  padding: 0.25em 0.5em;
+  padding-left: 0;
+  border-right: 1px solid black;
+}
+
+.sum__temp-max,
+.sum__temp-min {
+  padding: 0.25em 1em;
+  padding-right: 0;
+}
