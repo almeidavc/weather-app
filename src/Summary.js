@@ -6,8 +6,8 @@ const sumTempNow = document.querySelector(".sum__temp-now");
 const sumTempMax = document.querySelector(".sum__temp-max");
 const sumTempMin = document.querySelector(".sum__temp-min");
 
-class Summary {
-  display(weatherData) {
+export default class Summary {
+  static display(weatherData) {
     sumLocation.textContent = weatherData.location;
     sumDescription.textContent = weatherData.description;
     setTemp(sumTempNow, weatherData.tempNow);
@@ -15,5 +15,3 @@ class Summary {
     setTemp(sumTempMin, weatherData.tempMin, "L:");
   }
 }
-
-export default new Summary();
