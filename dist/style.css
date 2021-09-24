@@ -15,6 +15,7 @@
 .sum__temps {
   display: flex;
   align-items: center;
+  margin-top: 0.4em;
 }
 
 .sum__temp-now {
@@ -28,4 +29,20 @@
 .sum__temp-min {
   padding: 0.25em 1em;
   padding-right: 0;
+}
+
+/* FORECAST */
+
+.hourly,
+.daily {
+  display: flex;
+  overflow: scroll;
+}
+
+.hourly__item,
+.daily__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
 }

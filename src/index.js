@@ -1,9 +1,12 @@
 import "regenerator-runtime/runtime";
-import summary from "./summary";
-import { getWeatherData } from "./weatherApi";
+import { getWeather } from "./weatherData";
+import Summary from "./Summary";
+import Forecast from "./Forecast";
 
 async function loadWeatherInfo(location) {
-  summary.display(await getWeatherData(location));
+  const weatherData = await getWeather(location);
+  Summary.display(weatherData);
+  Forecast.displayHourly(weatherData);
 }
 
 loadWeatherInfo("london");
