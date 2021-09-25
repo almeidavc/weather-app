@@ -6,6 +6,12 @@
   padding: 0;
 }
 
+main {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10em;
+}
+
 /* SUMMARY */
 
 .sum {
@@ -33,10 +39,45 @@
 
 /* FORECAST */
 
+.forecast {
+  width: 60%;
+}
+
+.forecast__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2px;
+  justify-items: center;
+  gap: 3px 0;
+  width: 120px;
+  margin: 0 auto;
+}
+
+.buttons__bottom-bar {
+  position: relative;
+  background-color: lightgray;
+  width: 50px;
+  transition: left 0.2s;
+}
+
+.buttons__bottom-bar.hl-hourly {
+  left: 0;
+}
+
+.buttons__bottom-bar.hl-daily {
+  left: 100%;
+}
+
+.hourly__button,
+.daily__button {
+  border: none;
+  background: none;
+}
+
 .hourly,
 .daily {
   display: flex;
-  overflow: scroll;
+  overflow: scroll hidden;
 }
 
 .hourly__item,
