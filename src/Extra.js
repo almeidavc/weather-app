@@ -9,23 +9,31 @@ const buttonsBar = document.querySelector(".buttons__bottom-bar");
 export default class Extra {
   static hourlyForecast;
   static dailyForecast;
+  static active;
 
-  static display(weatherData) {
-    this.setupForecastComponents(weatherData);
+  static setup(weatherData) {
     this.setupButtons();
+    this.setupForecasts(weatherData);
     this.displayHourlyForecast();
   }
 
   static update(weatherData) {
-    this.setupForecastComponents(weatherData);
+    this.setupForecasts(weatherData);
+    if (this.active === "hourly") {
+      this.displayHourlyForecast();
+    } else {
+      this.displayDailyForecast();
+    }
   }
 
-  static setupForecastComponents(weatherData) {
+  static setupForecasts(weatherData) {
     this.hourlyForecast = new HourlyForecast(
       weatherData.hourly,
       hourlyContainer
     );
     this.dailyForecast = new DailyForecast(weatherData.daily, dailyContainer);
+    this.hourlyForecast.load();
+    this.dailyForecast.load();
   }
 
   static setupButtons() {
@@ -40,12 +48,14 @@ export default class Extra {
     this.dailyForecast.hide();
     this.hourlyForecast.display();
     this.highlightHourlyButton();
+    this.active = "hourly";
   }
 
   static displayDailyForecast() {
     this.hourlyForecast.hide();
     this.dailyForecast.display();
     this.hightlightDailyButton();
+    this.active = "daily";
   }
 
   static highlightHourlyButton() {

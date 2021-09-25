@@ -20,6 +20,8 @@ class Forecast {
   }
 
   load() {
+    this.hide();
+    this.container.innerHTML = "";
     this.weatherData.forEach(this.createWeatherItem.bind(this));
     this.loaded = true;
   }
@@ -67,6 +69,7 @@ export class DailyForecast extends Forecast {
       <img src=${url}>
       <div class="daily__temps">
         <span class="daily__min">${Math.round(temp.min)}°</span>
+        <span>-</span>
         <span class="daily__max">${Math.round(temp.max)}°</span>
       </div>
     `;

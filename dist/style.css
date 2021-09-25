@@ -12,6 +12,13 @@ main {
   margin-top: 10em;
 }
 
+/* TOPBAR */
+
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* SUMMARY */
 
 .sum {
@@ -86,6 +93,8 @@ main {
   flex-direction: column;
   align-items: center;
   margin: 1em;
+  flex-shrink: 0;
+  width: 65px;
 }
 
 /* HELPERS */
