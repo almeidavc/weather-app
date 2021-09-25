@@ -6,65 +6,57 @@ const hourlyContainer = document.querySelector(".hourly");
 const dailyContainer = document.querySelector(".daily");
 const buttonsBar = document.querySelector(".buttons__bottom-bar");
 
-export default class Extra {
-  static hourlyForecast;
-  static dailyForecast;
-  static active;
+let hourlyForecast;
+let dailyForecast;
+let active;
 
-  static setup(weatherData) {
-    this.setupButtons();
-    this.setupForecasts(weatherData);
-    this.displayHourlyForecast();
-  }
+export function setup(weatherData) {
+  setupButtons();
+  setupForecasts(weatherData);
+  displayHourlyForecast();
+}
 
-  static update(weatherData) {
-    this.setupForecasts(weatherData);
-    if (this.active === "hourly") {
-      this.displayHourlyForecast();
-    } else {
-      this.displayDailyForecast();
-    }
+export function update(weatherData) {
+  setupForecasts(weatherData);
+  if (active === "hourly") {
+    displayHourlyForecast();
+  } else {
+    displayDailyForecast();
   }
+}
 
-  static setupForecasts(weatherData) {
-    this.hourlyForecast = new HourlyForecast(
-      weatherData.hourly,
-      hourlyContainer
-    );
-    this.dailyForecast = new DailyForecast(weatherData.daily, dailyContainer);
-    this.hourlyForecast.load();
-    this.dailyForecast.load();
-  }
+function setupForecasts(weatherData) {
+  hourlyForecast = new HourlyForecast(weatherData.hourly, hourlyContainer);
+  dailyForecast = new DailyForecast(weatherData.daily, dailyContainer);
+  hourlyForecast.load();
+  dailyForecast.load();
+}
 
-  static setupButtons() {
-    hourlyButton.addEventListener(
-      "click",
-      this.displayHourlyForecast.bind(this)
-    );
-    dailyButton.addEventListener("click", this.displayDailyForecast.bind(this));
-  }
+function setupButtons() {
+  hourlyButton.addEventListener("click", displayHourlyForecast);
+  dailyButton.addEventListener("click", displayDailyForecast);
+}
 
-  static displayHourlyForecast() {
-    this.dailyForecast.hide();
-    this.hourlyForecast.display();
-    this.highlightHourlyButton();
-    this.active = "hourly";
-  }
+function displayHourlyForecast() {
+  dailyForecast.hide();
+  hourlyForecast.display();
+  highlightHourlyButton();
+  active = "hourly";
+}
 
-  static displayDailyForecast() {
-    this.hourlyForecast.hide();
-    this.dailyForecast.display();
-    this.hightlightDailyButton();
-    this.active = "daily";
-  }
+function displayDailyForecast() {
+  hourlyForecast.hide();
+  dailyForecast.display();
+  hightlightDailyButton();
+  active = "daily";
+}
 
-  static highlightHourlyButton() {
-    buttonsBar.classList.remove("hl-daily");
-    buttonsBar.classList.add("hl-hourly");
-  }
+function highlightHourlyButton() {
+  buttonsBar.classList.remove("hl-daily");
+  buttonsBar.classList.add("hl-hourly");
+}
 
-  static hightlightDailyButton() {
-    buttonsBar.classList.remove("hl-hourly");
-    buttonsBar.classList.add("hl-daily");
-  }
+function hightlightDailyButton() {
+  buttonsBar.classList.remove("hl-hourly");
+  buttonsBar.classList.add("hl-daily");
 }
