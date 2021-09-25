@@ -46,3 +46,9 @@
   align-items: center;
   margin: 1em;
 }
+
+/* HELPERS */
+
+.hidden {
+  display: none;
+}

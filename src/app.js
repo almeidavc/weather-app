@@ -1,6 +1,6 @@
 import { getWeather } from "./weatherData";
 import Summary from "./Summary";
-import Forecast from "./Forecast";
+import Extra from "./Extra";
 
 function start() {
   loadWeatherInfo("london");
@@ -9,7 +9,7 @@ function start() {
 async function loadWeatherInfo(location) {
   const weatherData = await getWeather(location);
   Summary.display(weatherData);
-  Forecast.displayHourly(weatherData);
+  Extra.display(weatherData);
 }
 
 export default { start };
