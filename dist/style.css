@@ -9,7 +9,8 @@
 main {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 10em;
+  align-items: center;
+  margin: 10em 4em;
 }
 
 /* TOPBAR */
@@ -17,6 +18,39 @@ main {
 .topbar {
   display: flex;
   justify-content: flex-end;
+  margin: 1em;
+}
+
+.topbar__search,
+.topbar__unit {
+  margin: 0.3em;
+  border: 1px solid lightgray;
+  border-radius: 0.5em;
+  background: hsla(0, 0%, 97%, 50%);
+}
+
+.topbar__search:hover,
+.topbar__unit:hover {
+  background: hsla(0, 0%, 90%, 50%);
+}
+
+.topbar__search {
+  padding: 0.5em;
+}
+
+.topbar__search > button,
+.topbar__search > input {
+  border: none;
+  background: none;
+  margin: 0.25em;
+}
+
+.topbar__search > input:focus {
+  outline: none;
+}
+
+.topbar__unit {
+  width: 3em;
 }
 
 /* SUMMARY */
@@ -48,6 +82,7 @@ main {
 
 .forecast {
   width: 60%;
+  height: 180px;
 }
 
 .forecast__buttons {
@@ -57,7 +92,7 @@ main {
   justify-items: center;
   gap: 3px 0;
   width: 120px;
-  margin: 0 auto;
+  margin: 0.5em auto;
 }
 
 .buttons__bottom-bar {
@@ -65,14 +100,6 @@ main {
   background-color: lightgray;
   width: 50px;
   transition: left 0.2s;
-}
-
-.buttons__bottom-bar.hl-hourly {
-  left: 0;
-}
-
-.buttons__bottom-bar.hl-daily {
-  left: 100%;
 }
 
 .hourly__button,
@@ -84,7 +111,7 @@ main {
 .hourly,
 .daily {
   display: flex;
-  overflow: scroll hidden;
+  overflow: auto hidden;
 }
 
 .hourly__item,

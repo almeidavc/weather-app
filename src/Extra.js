@@ -50,11 +50,13 @@ function displayDailyForecast() {
 }
 
 function highlightHourlyButton() {
-  buttonsBar.classList.remove("hl-daily");
-  buttonsBar.classList.add("hl-hourly");
+  buttonsBar.style.left = "0";
+  /* buttonsBar.classList.remove("hl-daily");
+  buttonsBar.classList.add("hl-hourly"); */
 }
 
 function hightlightDailyButton() {
-  buttonsBar.classList.remove("hl-hourly");
-  buttonsBar.classList.add("hl-daily");
+  buttonsBar.style.left = "100%";
+  /* buttonsBar.classList.remove("hl-hourly");
+  buttonsBar.classList.add("hl-daily"); */
 }

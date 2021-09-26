@@ -40,3 +40,7 @@ function convertTempUnit(convertFunc) {
     item.temp.min = convertFunc(item.temp.min);
   });
 }
+
+export function getTempUnit() {
+  return tempUnit;
+}
