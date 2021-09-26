@@ -13,6 +13,11 @@ main {
   margin: 10em 4em;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
 /* TOPBAR */
 
 .topbar {

@@ -51,12 +51,8 @@ function displayDailyForecast() {
 
 function highlightHourlyButton() {
   buttonsBar.style.left = "0";
-  /* buttonsBar.classList.remove("hl-daily");
-  buttonsBar.classList.add("hl-hourly"); */
 }
 
 function hightlightDailyButton() {
   buttonsBar.style.left = "100%";
-  /* buttonsBar.classList.remove("hl-hourly");
-  buttonsBar.classList.add("hl-daily"); */
 }
