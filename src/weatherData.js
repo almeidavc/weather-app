@@ -2,7 +2,7 @@ import { fetchWeatherData, fetchCoords, fetchWeatherIcons } from "./weatherApi";
 
 let weatherIcons;
 
-async function getWeather(locationName) {
+export async function getWeather(locationName) {
   try {
     await getWeatherIcons();
     return await getWeatherData(await getExactLocation(locationName));
@@ -78,5 +78,3 @@ function setWeatherIcon(item) {
 function getWeatherIcon(id) {
   return weatherIcons.find((icon) => icon.id === id);
 }
-
-export { getWeather };

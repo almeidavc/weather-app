@@ -8,16 +8,14 @@ const buttonsBar = document.querySelector(".buttons__bottom-bar");
 
 let hourlyForecast;
 let dailyForecast;
-let active;
+let active = "hourly";
 
-export function setup(weatherData) {
+export function setup() {
   setupButtons();
-  setupForecasts(weatherData);
-  displayHourlyForecast();
 }
 
-export function update(weatherData) {
-  setupForecasts(weatherData);
+export function display(weatherData) {
+  loadForecasts(weatherData);
   if (active === "hourly") {
     displayHourlyForecast();
   } else {
@@ -25,7 +23,7 @@ export function update(weatherData) {
   }
 }
 
-function setupForecasts(weatherData) {
+function loadForecasts(weatherData) {
   hourlyForecast = new HourlyForecast(weatherData.hourly, hourlyContainer);
   dailyForecast = new DailyForecast(weatherData.daily, dailyContainer);
   hourlyForecast.load();

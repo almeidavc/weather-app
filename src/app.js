@@ -1,28 +1,14 @@
 import { getWeather } from "./weatherData";
-import * as Summary from "./Summary";
-import * as Extra from "./Extra";
+import { updateWeather } from "./model";
+import { setup as setupTopbar } from "./topbar";
+import { setup as setupExtra } from "./Extra";
 
-const topbarSearchButton = document.querySelector(".topbar__search > button");
-const topbarSearchInput = document.querySelector(".topbar__search > input");
-
-function start() {
-  loadWeatherInfo("porto");
+export function start() {
+  setupTopbar();
+  setupExtra();
+  loadWeather("porto");
 }
 
-async function loadWeatherInfo(location) {
-  const weatherData = await getWeather(location);
-  Summary.display(weatherData);
-  Extra.setup(weatherData);
+export async function loadWeather(location) {
+  updateWeather(await getWeather(location));
 }
-
-async function updateWeatherInfo(location) {
-  const weatherData = await getWeather(location);
-  Summary.display(weatherData);
-  Extra.update(weatherData);
-}
-
-topbarSearchButton.addEventListener("click", () => {
-  updateWeatherInfo(topbarSearchInput.value);
-});
-
-export default { start };

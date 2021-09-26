@@ -1,3 +1,5 @@
+import { getTempFormatted } from "./utils";
+
 // abstract class
 // subclasses need to implement createWeatherItem() method
 class Forecast {
@@ -21,13 +23,13 @@ class Forecast {
 
   load() {
     this.hide();
-    this.container.innerHTML = "";
+    this.clearContainer();
     this.weatherData.forEach(this.createWeatherItem.bind(this));
     this.loaded = true;
   }
 
   createWeatherItem() {
-    throw "createWeatherItem is abstract";
+    throw "createWeatherItem method is abstract";
   }
 
   hide() {
@@ -36,6 +38,10 @@ class Forecast {
 
   show() {
     this.container.classList.remove("hidden");
+  }
+
+  clearContainer() {
+    this.container.innerHTML = "";
   }
 }
 
@@ -50,7 +56,7 @@ export class HourlyForecast extends Forecast {
     hourlyItem.innerHTML = `
       <p class="hourly__hour">${hourUTC}</p>
       <img src=${url}>
-      <p class="hourly__temp">${temp}°</p>
+      <p class="hourly__temp">${getTempFormatted(temp)}</p>
     `;
     this.container.appendChild(hourlyItem);
   }
@@ -68,9 +74,9 @@ export class DailyForecast extends Forecast {
       <p class="daily__weekday">${weekDayUTC}</p>
       <img src=${url}>
       <div class="daily__temps">
-        <span class="daily__min">${Math.round(temp.min)}°</span>
+        <span class="daily__min">${getTempFormatted(temp.min)}</span>
         <span>-</span>
-        <span class="daily__max">${Math.round(temp.max)}°</span>
+        <span class="daily__max">${getTempFormatted(temp.max)}</span>
       </div>
     `;
     this.container.appendChild(dailyItem);

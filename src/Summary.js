@@ -1,4 +1,4 @@
-import { setTemp } from "./utils";
+import { getTempFormatted } from "./utils";
 
 const sumLocation = document.querySelector(".sum__location");
 const sumDescription = document.querySelector(".sum__description");
@@ -9,7 +9,17 @@ const sumTempMin = document.querySelector(".sum__temp-min");
 export function display(weatherData) {
   sumLocation.textContent = weatherData.location;
   sumDescription.textContent = weatherData.current.description;
-  setTemp(sumTempNow, weatherData.current.temp);
-  setTemp(sumTempMax, weatherData.daily[0].temp.max, "H:");
-  setTemp(sumTempMin, weatherData.daily[0].temp.min, "L:");
+  displayTemps(weatherData);
+}
+
+function displayTemps(weatherData) {
+  sumTempNow.textContent = getTempFormatted(weatherData.current.temp);
+  sumTempMax.textContent = getTempFormatted(
+    weatherData.daily[0].temp.max,
+    "H:"
+  );
+  sumTempMin.textContent = getTempFormatted(
+    weatherData.daily[0].temp.min,
+    "L:"
+  );
 }
