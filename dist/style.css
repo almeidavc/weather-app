@@ -13,11 +13,6 @@ main {
   margin: 10em 4em;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-}
-
 /* TOPBAR */
 
 .topbar {
@@ -127,6 +122,30 @@ footer {
   margin: 1em;
   flex-shrink: 0;
   width: 65px;
+}
+
+/* FOOTER */
+
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 130px;
+  display: flex;
+  justify-content: center;
+}
+
+.openweather-logo.active {
+  animation: loading 0.3s linear 0s infinite running;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* HELPERS */
