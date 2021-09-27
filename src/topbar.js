@@ -1,17 +1,23 @@
 import { toggleTempUnit, getTempUnit } from "./model";
 import { loadWeather } from "./app";
 
-const topbarSearchButton = document.querySelector(".topbar__search > button");
+const topbarSearch = document.querySelector(".topbar__search");
 const topbarSearchInput = document.querySelector(".topbar__search > input");
 const topbarUnitButton = document.querySelector(".topbar__unit");
 
 export function setup() {
-  topbarSearchButton.addEventListener("click", searchOnClick);
+  topbarSearch.addEventListener("submit", formOnSubmit);
   topbarUnitButton.addEventListener("click", unitOnClick);
 }
 
-function searchOnClick() {
+function formOnSubmit(event) {
+  event.preventDefault();
   loadWeather(topbarSearchInput.value);
+  resetForm();
+}
+
+function resetForm() {
+  topbarSearchInput.value = "";
 }
 
 function unitOnClick() {
