@@ -1,4 +1,4 @@
-const API_KEY = "7f25452f6b74ed11e1e1effa780583dc";
+const API_KEY = "#";
 
 const weatherIconsIDs = [
   "01d",
